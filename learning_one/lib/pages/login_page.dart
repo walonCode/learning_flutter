@@ -20,7 +20,8 @@ class LoginPage extends StatelessWidget {
               SizedBox(height:10),
               Text('Login',style:TextStyle(
                 fontSize: 24,
-                color:Colors.white
+                color:Colors.white,
+                fontWeight: FontWeight.bold
               )),
               SizedBox(
                 height: 20,
@@ -48,43 +49,86 @@ class LoginPage extends StatelessWidget {
                     suffixIcon: Icon(Icons.visibility_off)
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  TextButton(onPressed: () {}, child: Text('forgot password'))
-                ],
+              Align(
+                alignment: Alignment.centerRight,
+                child: 
+                  TextButton(
+                    onPressed: () {}, 
+                    style: TextButton.styleFrom(
+                      foregroundColor: Colors.white,
+                    ),
+                    child: Text('....forgot password',style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontStyle: FontStyle.italic
+                    ),),
+                  )
               ),
-              ElevatedButton(
-                  onPressed: () {
-                    print('login is click');
-                  },
-                  child: Text('Login')
+              SizedBox(
+                width: 250,
+                child: ElevatedButton(
+                    onPressed: () {
+                      print('login is click');
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.blue,
+                      foregroundColor: Colors.white
+                    ),
+                    child: Text('Log in',style:TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20
+                    ))
+                ),
               ),
               SizedBox(height: 15,),
-              Text('or sign in with'), 
+              Text('or sign in with',style:TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      )), 
               SizedBox(height: 15,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: (){}, 
-                    child: Image.asset(
-                      'assets/images/google.jpeg',
-                      width:50, 
-                      height:50,
-                      fit: BoxFit.contain,
-                      )
-                  ),
-                  ElevatedButton(
-                    onPressed: (){}, 
-                    child: Image.asset(
-                      'assets/images/facebook.png',
-                      width:50 ,
-                      height:50,
-                      fit: BoxFit.contain,
-                      )
-                  ),
-                ],
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: (){}, 
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/google.jpeg',
+                        width:25, 
+                        height:25,
+                        fit: BoxFit.contain,
+                      ),
+                      SizedBox(width: 8,),
+                      Text('Google',style:TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ))
+                    ],
+                  )
+                ),
+              ),
+              SizedBox(height: 5,),
+              SizedBox(
+                width: 300,
+                child: ElevatedButton(
+                  onPressed: (){}, 
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        'assets/images/facebook.png',
+                        width:25 ,
+                        height:25,
+                        fit: BoxFit.contain,
+                      ),
+                      SizedBox(width:8),
+                      Text('Facebook',style:TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.bold,
+                      ))
+                    ],
+                  )
+                ),
               ),
               Container(
                 padding: EdgeInsets.all(25),
@@ -98,7 +142,8 @@ class LoginPage extends StatelessWidget {
                     SizedBox(width:4),
                     TextButton(onPressed: (){}, child: Text('Sign up',style: TextStyle(
                       color:Colors.yellow,
-                      fontWeight: FontWeight.bold
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.underline
                     ),))
                   ],
                 ),

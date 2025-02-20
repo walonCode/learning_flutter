@@ -12,6 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        fontFamily: "Roboto Condensed"
+      ),
       home: Scaffold(
         backgroundColor: Colors.blue[300],
         appBar: AppBar(
@@ -20,15 +23,16 @@ class MyApp extends StatelessWidget {
           title: Text(
             "My App",
             style: TextStyle(
-              color:Colors.white
-            ),
+                color: Colors.white,
+                fontWeight: FontWeight.bold),
           ),
           leading: Icon(Icons.menu),
           actions: [
             IconButton(
-              onPressed:(){} , 
-              icon: Icon(Icons.login)
-            )
+                onPressed: () {
+                  print('login on App bar');
+                },
+                icon: Icon(Icons.login_sharp))
           ],
         ),
         body: LoginPage(),
