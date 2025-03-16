@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:lesson_two/utils/todo_list.dart';
 
 class HomePage extends StatefulWidget {
-  HomePage({super.key});
+  const HomePage({super.key});
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -20,7 +20,7 @@ class _HomePageState extends State<HomePage> {
   //getting the input from the textfield
   TextEditingController controller = TextEditingController();
 
-  
+
   //setState is like using useState in react
   void checkBoxChanged(int index) {
     setState(() {
@@ -30,8 +30,15 @@ class _HomePageState extends State<HomePage> {
 
   void saveNewTask() {
     setState(() {
+      if(controller.text.isEmpty) return;
       todo.add([controller.text, false]);
-      controller.text = " ";
+      controller.clear();
+    });
+  }
+
+  void deleteTask(int index){
+    setState(() {
+      todo.removeAt(index);
     });
   }
 
@@ -59,11 +66,12 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView.builder(
           itemCount: todo.length,
-          itemBuilder: (BuildContext context, index) {
+          itemBuilder: (BuildContext context, int index) {
             return TodoList(
               taskName: todo[index][0],
               taskCompleted: todo[index][1],
               onchanged: (value) => checkBoxChanged(index),
+              deleteTodo: (context) => deleteTask(index),
             );
           }),
       floatingActionButton: Row(
