@@ -52,7 +52,7 @@ app.delete('/:id', async(req, res) => {
 
 app.patch("/:id", async(req,res) => {
     try{
-        const todo = await Todo.findByIdAndUpdate({_id:req.params.id}, {update : req.body})
+        const todo = await Todo.findByIdAndUpdate({_id:req.params.id}, {status : req.body},{new: true, runValidators:true})
         if(!todo){
             return res.status(404).json({message: "Todo not found"})
         }
