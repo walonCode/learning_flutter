@@ -30,7 +30,7 @@ app.get("/", async(req, res) => {
 app.post("/", async(req, res) => {
     try{
         const todo = await Todo.create(req.body)
-        return res.status(200).json(todo)
+        return res.status(201).json(todo)
     }catch(error){
         console.error(error)
         return res.status(500).json({message: "server error"})
@@ -39,7 +39,8 @@ app.post("/", async(req, res) => {
 
 app.delete('/:id', async(req, res) => {
     try{
-        const todo = await Todo.findByIdAndDelete(req.params.id)
+        const { id } = req.params
+        const todo = await Todo.findByIdAndDelete({_id:id})
         if(!todo){
             return res.status(404).json({message: "Todo not found"})
         }
